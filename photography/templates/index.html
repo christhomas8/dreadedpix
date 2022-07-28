@@ -1,0 +1,71 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}"/>
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.png' %}"/>
+    <title>Dreaded Pix</title>
+  </head>
+  <body class="container ">
+
+    <div class="header">
+        <div class="logo">
+            <img src="{% static 'logo.png' %}" alt="logo" >
+        </div>
+        <div class="nav">
+            <ul>
+                <a href="/"><li>Home</li></a>
+                <a href="/gallery"><li>Gallery</li></a>
+                <a href="/booking"><li style="background-color: rgb(226, 111, 17);border-radius: 15px;">Booking</li></a>
+            </ul>
+        </div>
+    </div>
+
+    <div class="hero">
+        {% for x in head %}
+            <img src="{{ x.headerpic.url }}" alt="profile" style="width:100%;">
+        {% endfor %}
+        <div class="hero-text">
+            <h3>Photography Services Available:</h3>
+            <ul>
+                <li><h4>Specialty Events</h4></li>
+                <li><h4>Groups and Solos</h4> </li>
+                <li><h4>Fine Arts and more!</h4><br></li>
+            </ul>
+            <a href="booking" id="book">Book Now</a>
+        </div>
+    </div>
+
+    <!--Header-->
+    <div class="about">
+        <h1>About Me</h1>
+        {% for x in avi %}
+            <img src="{{ x.avatarpic.url }}" alt="profile" >
+        {% endfor %}
+        <div>
+            {% if bio %}
+                {% for biography in bio %}
+                    <p>{{ biography.bio_text }}</p>
+                {% endfor %}
+            {% endif %}
+            
+        </div>
+    </div>
+    
+        <a href="gallery" style="text-decoration:none;color:black;"><div class="gallery">Gallery &#8594;</div></a>
+        <a href="booking" style="text-decoration:none;color:black;"><div class="gallery">Booking &#8594;</div></a>
+    
+    <div class="footer">
+        <p>Powered by specialtsupport.com</p>
+    </div>
+
+  </body>
+</html>

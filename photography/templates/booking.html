@@ -1,0 +1,72 @@
+{% load static %}
+
+{% load crispy_forms_tags %} 
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}"/>
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.png' %}"/>
+    <title>Dreaded Pix</title>
+  </head>
+  <body >
+
+    <div class="header">
+        <div class="logo">
+            <img src="{% static 'logo.png' %}" alt="logo" >
+        </div>
+        <div class="nav">
+            <ul>
+                <a href="/"><li>Home</li></a>
+                <a href="/gallery"><li>Gallery</li></a>
+                <a href="/booking"><li style="background-color: rgb(226, 111, 17);border-radius: 15px;">Booking</li></a>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row" style="border-top: solid 2px white;">
+        <h1 style="text-align: center;padding:10px;">Booking</h1>
+        <h3 style="text-align: center;padding-bottom: 30px;">Fill out the Contact Form below and you will be contacted for booking.</h3>
+    </div>
+    
+    <!-- Weddings, Parties, Family Albums, Professional Portraits, Group Photos,Advertising, Scenery,  -->
+
+    
+    <div class="contact">
+        <form action="" method="post" style="margin: 1.3em 20%;" onsubmit=logger()>
+            {% csrf_token %}
+            {{ form|crispy}}      
+            <br>
+            <button type="submit" style="display: block;margin: 0px auto;">Submit</button>
+        </form>
+    </div>
+
+    <div style="height:300px;">
+    
+    </div>
+
+    
+        <a href="/gallery" style="text-decoration:none;color:black;"><div class="gallery">Gallery &#8592;</div></a>
+        <a href="/" style="text-decoration:none;color:black;"><div class="gallery">Home &#8594;</div></a>
+    
+    <div class="footer">
+        <p>Powered by specialtsupport.com</p>
+    </div>
+
+  </body>
+
+  <script>
+      function logger(){
+          console.log("form sent");
+          alert("Contact Data Submitted!\n\n You will be contacted as soon as possible for booking details.");
+      }
+  </script>
+</html>
